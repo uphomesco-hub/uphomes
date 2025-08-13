@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/uphomes/static/css/main.e6c13ad2.css",
-    "main.js": "/uphomes/static/js/main.944507ca.js",
+    "main.js": "/uphomes/static/js/main.dce4a6c6.js",
     "index.html": "/uphomes/index.html",
     "main.e6c13ad2.css.map": "/uphomes/static/css/main.e6c13ad2.css.map",
-    "main.944507ca.js.map": "/uphomes/static/js/main.944507ca.js.map"
+    "main.dce4a6c6.js.map": "/uphomes/static/js/main.dce4a6c6.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.944507ca.js"
+    "static/js/main.dce4a6c6.js"
   ]
 }
