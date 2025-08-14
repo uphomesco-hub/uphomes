@@ -1023,20 +1023,27 @@ const App = () => {
             </p>
             <div className="cta-row">
               <motion.a
+                target="_blank"
                 className="btn btn-primary magnetic"
-                href="#download"
+                href="https://apps.apple.com/in/app/uphomes/id6737268880"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Download App
+                <FaApple  style={{fontSize: "22px"}}/>
+                App Store
               </motion.a>
               <motion.a
                 className="btn btn-ghost magnetic"
-                href="#features"
+                href="https://play.google.com/store/apps/details?id=com.flutterflow.homeU742786"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Explore Features
+                <FaGooglePlay style={{fontSize: "22px"}}/>
+
+Play Store
               </motion.a>
             </div>
             <div className="kpis">
@@ -1443,7 +1450,7 @@ const App = () => {
                   Find verified rentals, match faster with AI, and close deals
                   without brokerage. Available on iOS and Android.
                 </motion.p>
-                <div
+                {/* <div
                   style={{
                     display: "flex",
                     gap: "12px",
@@ -1474,7 +1481,7 @@ const App = () => {
 
                     Play Store
                   </motion.a>
-                </div>
+                </div> */}
               </div>
               <div
                 style={{
