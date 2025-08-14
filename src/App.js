@@ -941,7 +941,7 @@ const App = () => {
           </div>
           <div className="card fade-up">
             <img
-              src={`${process.env.PUBLIC_URL}/5-phone-mockups.png`}
+              src={`${process.env.PUBLIC_URL}/5-phone.png`}
               alt="UpHomes app showcase"
               style={{
                 padding: "0",
