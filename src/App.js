@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaApple, FaFacebook, FaGooglePlay, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -107,8 +107,17 @@ const App = () => {
     const yearEl = document.getElementById("y");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Keyboard handler for closing sidebar with Escape key
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+
     // KPI Counter Animation
-    const animateCounter = (element, target, duration = 2000) => {
+    const animateCounter = (element, target, duration = 4000) => {
       const start = 0;
       const startTime = performance.now();
       
@@ -242,8 +251,9 @@ const App = () => {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener('keydown', handleEscape);
     };
-  }, []);
+      }, [isMenuOpen]);
 
   return (
     <>
@@ -407,6 +417,16 @@ const App = () => {
         .nav a {
           color: #d7dde5;
           opacity: 0.92;
+          transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+          color: #f4a261;
+          opacity: 1;
+        }
+        .social-icons:hover {
+          color: #f4a261 !important;
+          opacity: 1;
         }
 
         .menu-toggle {
@@ -788,7 +808,24 @@ const App = () => {
           
           .menu-toggle {
             display: block;
+            z-index: 200;
+            position: relative;
           }
+          
+          .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 150;
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+          }
+          
           .nav-links {
             position: fixed;
             top: 0;
@@ -801,11 +838,30 @@ const App = () => {
             padding: 80px 20px 40px;
             gap: 24px;
             transition: right 0.4s ease;
-            z-index: 100;
+            z-index: 200;
           }
           .nav-links.open {
             right: 0;
           }
+          .sidebar-close {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+          }
+          
+          .sidebar-close:hover {
+            // background: rgba(255, 255, 255, 0.1);
+            color: #f4a261;
+          }
+          
           .nav-links a {
             font-size: 18px;
             padding: 12px;
@@ -884,28 +940,65 @@ const App = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <IoMdClose /> : <FaBarsStaggered />}
+            {!isMenuOpen && <FaBarsStaggered />}
           </button>
+
+          {/* Overlay for closing sidebar when clicking outside */}
+          {isMenuOpen && (
+            <div 
+              className="sidebar-overlay"
+              onClick={() => {
+                console.log('Overlay clicked - closing sidebar');
+                setIsMenuOpen(false);
+              }}
+            />
+          )}
 
           <div
             className={`nav-links ${isMenuOpen ? "open" : ""} fade-in delay-2`}
           >
-            <a href="#showcase" onClick={() => setIsMenuOpen(false)}>
+            {/* Close button inside sidebar */}
+            {isMenuOpen && (
+            <button
+              className="sidebar-close"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Close menu"
+            >
+              <IoMdClose />
+            </button>
+            )}
+            
+            <a href="#showcase" onClick={() => {
+              console.log('Showcase clicked - closing sidebar');
+              setIsMenuOpen(false);
+            }}>
               Showcase
             </a>
-            <a href="#features" onClick={() => setIsMenuOpen(false)}>
+            <a href="#features" onClick={() => {
+              console.log('Features clicked - closing sidebar');
+              setIsMenuOpen(false);
+            }}>
               Features
             </a>
-            <a href="#how" onClick={() => setIsMenuOpen(false)}>
+            <a href="#how" onClick={() => {
+              console.log('How it works clicked - closing sidebar');
+              setIsMenuOpen(false);
+            }}>
               How it works
             </a>
-            <a href="#compare" onClick={() => setIsMenuOpen(false)}>
+            <a href="#compare" onClick={() => {
+              console.log('Compare clicked - closing sidebar');
+              setIsMenuOpen(false);
+            }}>
               Compare
             </a>
             <a
               href="#download"
               className="chip"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                console.log('Download clicked - closing sidebar');
+                setIsMenuOpen(false);
+              }}
               aria-label="Download the app"
             >
               📲 <span>Get the App</span>
@@ -919,7 +1012,7 @@ const App = () => {
         <div className="container hero-fancy">
           <div className="hero-copy fade-up">
             <h1>
-              <span className="shine">Find verified rentals</span>
+              <span className="shine">Find verified rentals </span>
               <span className="gradient-text">fast, fair & </span>
               <span className="shine">spam-free.</span>
             </h1>
@@ -1366,6 +1459,7 @@ const App = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
+                    <FaApple  style={{fontSize: "22px"}}/>
                     App Store
                   </motion.a>
                   <motion.a
@@ -1376,6 +1470,8 @@ const App = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
+                    <FaGooglePlay style={{fontSize: "22px"}}/>
+
                     Play Store
                   </motion.a>
                 </div>
@@ -1446,7 +1542,7 @@ const App = () => {
                 margin: "0",
               }}
             >
-              <FaInstagram style={{ color: "white", fontSize: "18px" }} />
+              <FaInstagram style={{ color: "white", fontSize: "18px" }} className="social-icons"/>
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=61572085060403"
@@ -1459,7 +1555,7 @@ const App = () => {
                 margin: "0",
               }}
             >
-              <FaFacebook style={{ color: "white", fontSize: "18px" }} />
+              <FaFacebook style={{ color: "white", fontSize: "18px" }} className="social-icons" />
             </a>
             <a
               href="https://www.linkedin.com/company/uphomes/"
@@ -1472,7 +1568,7 @@ const App = () => {
                 margin: "0",
               }}
             >
-              <FaLinkedin style={{ color: "white", fontSize: "18px" }} />
+              <FaLinkedin style={{ color: "white", fontSize: "18px" }} className="social-icons" />
             </a>
           </div>
         </div>
