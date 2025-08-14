@@ -493,7 +493,7 @@ const App = () => {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
-          margin-top: 24px;
+          margin-top: 56px;
         }
 
         .kpi {
@@ -773,6 +773,7 @@ const App = () => {
         }
           .kpis {
             width: 100%;
+            margin-top: 24px !important;
           }
           .hero-fancy {
             grid-template-columns: 1fr;
