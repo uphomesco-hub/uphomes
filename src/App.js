@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 const FEATURES = [
@@ -1362,7 +1362,7 @@ const App = () => {
                     className="btn btn-primary magnetic"
                     href="https://apps.apple.com/in/app/uphomes/id6737268880"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -1372,7 +1372,7 @@ const App = () => {
                     className="btn btn-ghost magnetic"
                     href="https://play.google.com/store/apps/details?id=com.flutterflow.homeU742786"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -1438,6 +1438,7 @@ const App = () => {
             <a
               href="https://www.instagram.com/uphomes.in/"
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: "transparent",
                 border: "none",
@@ -1450,6 +1451,7 @@ const App = () => {
             <a
               href="https://www.facebook.com/profile.php?id=61572085060403"
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: "transparent",
                 border: "none",
@@ -1462,6 +1464,7 @@ const App = () => {
             <a
               href="https://www.linkedin.com/company/uphomes/"
               target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: "transparent",
                 border: "none",
