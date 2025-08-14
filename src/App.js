@@ -201,6 +201,43 @@ const App = () => {
       };
     }
 
+    // Magnetic hover effect on buttons
+    if (matchMedia('(hover: hover)').matches) { // avoid on touch devices
+      const strength = 14; // px
+      const magneticElements = document.querySelectorAll('.magnetic');
+      const eventHandlers = [];
+      
+      magneticElements.forEach(el => {
+        const enter = () => el.style.transition = 'transform .15s ease-out';
+        const leave = () => { 
+          el.style.transition = 'transform .25s ease'; 
+          el.style.transform = 'translate3d(0,0,0)'; 
+        };
+        const move = (e) => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - (r.left + r.width/2)) / (r.width/2);
+          const y = (e.clientY - (r.top + r.height/2)) / (r.height/2);
+          el.style.transform = `translate3d(${x*strength}px, ${y*strength}px, 0)`;
+        };
+        
+        el.addEventListener('mouseenter', enter);
+        el.addEventListener('mousemove', move);
+        el.addEventListener('mouseleave', leave);
+        
+        // Store handlers for cleanup
+        eventHandlers.push({ el, enter, move, leave });
+      });
+
+      // Cleanup function for magnetic effect
+      return () => {
+        eventHandlers.forEach(({ el, enter, move, leave }) => {
+          el.removeEventListener('mouseenter', enter);
+          el.removeEventListener('mousemove', move);
+          el.removeEventListener('mouseleave', leave);
+        });
+      };
+    }
+
 
 
     return () => {
@@ -709,20 +746,26 @@ const App = () => {
 
         /* Responsive */
         @media (max-width: 1000px) {
+        .cta-row {
+          width: 100%;
+          justify-content: center;
+          
+        }
+          .kpis {
+            width: 100%;
+          }
           .hero-fancy {
             grid-template-columns: 1fr;
             text-align: center;
           }
-          .cta-row {
-            justify-content: center;
-          }
+          
           .hero-visual {
             margin-top: 8px;
           }
-          .floating-bubble.one, .floating-bubble.two,
-          .floating-bubble.btxt1, .floating-bubble.btxt2, .floating-bubble.btxt3 {
-            display: none;
-          }
+          // .floating-bubble.one, .floating-bubble.two,
+          // .floating-bubble.btxt1, .floating-bubble.btxt2, .floating-bubble.btxt3 {
+          //   display: none;
+          // }
           .grid-3 {
             grid-template-columns: repeat(2, 1fr);
           }
@@ -735,6 +778,14 @@ const App = () => {
         }
 
         @media (max-width: 768px) {
+        
+          .qr-code {
+            display: none !important;
+          }
+          .grid-col{
+            grid-template-columns: 1fr !important;
+          }
+          
           .menu-toggle {
             display: block;
           }
@@ -1278,6 +1329,7 @@ const App = () => {
                 gap: "20px",
                 alignItems: "center",
               }}
+              className="grid-col"
             >
               <div>
                 <motion.h2
@@ -1442,6 +1494,8 @@ const App = () => {
           </filter>
         </defs>
       </svg>
+
+
     </>
   );
 };
