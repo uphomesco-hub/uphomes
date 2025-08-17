@@ -1,0 +1,9 @@
+[[edge_functions]]
+path = "/download"
+function = "smart-redirect"
+
+# React SPA fallback (keep only ONE if you already have it)
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
