@@ -946,10 +946,10 @@ const App = () => {
 
           {/* Overlay for closing sidebar when clicking outside */}
           {isMenuOpen && (
-            <div 
+            <div
               className="sidebar-overlay"
               onClick={() => {
-                console.log('Overlay clicked - closing sidebar');
+                console.log("Overlay clicked - closing sidebar");
                 setIsMenuOpen(false);
               }}
             />
@@ -960,44 +960,56 @@ const App = () => {
           >
             {/* Close button inside sidebar */}
             {isMenuOpen && (
-            <button
-              className="sidebar-close"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <IoMdClose />
-            </button>
+              <button
+                className="sidebar-close"
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <IoMdClose />
+              </button>
             )}
-            
-            <a href="#showcase" onClick={() => {
-              console.log('Showcase clicked - closing sidebar');
-              setIsMenuOpen(false);
-            }}>
+
+            <a
+              href="#showcase"
+              onClick={() => {
+                console.log("Showcase clicked - closing sidebar");
+                setIsMenuOpen(false);
+              }}
+            >
               Showcase
             </a>
-            <a href="#features" onClick={() => {
-              console.log('Features clicked - closing sidebar');
-              setIsMenuOpen(false);
-            }}>
+            <a
+              href="#features"
+              onClick={() => {
+                console.log("Features clicked - closing sidebar");
+                setIsMenuOpen(false);
+              }}
+            >
               Features
             </a>
-            <a href="#how" onClick={() => {
-              console.log('How it works clicked - closing sidebar');
-              setIsMenuOpen(false);
-            }}>
+            <a
+              href="#how"
+              onClick={() => {
+                console.log("How it works clicked - closing sidebar");
+                setIsMenuOpen(false);
+              }}
+            >
               How it works
             </a>
-            <a href="#compare" onClick={() => {
-              console.log('Compare clicked - closing sidebar');
-              setIsMenuOpen(false);
-            }}>
+            <a
+              href="#compare"
+              onClick={() => {
+                console.log("Compare clicked - closing sidebar");
+                setIsMenuOpen(false);
+              }}
+            >
               Compare
             </a>
             <a
               href="#download"
               className="chip"
               onClick={() => {
-                console.log('Download clicked - closing sidebar');
+                console.log("Download clicked - closing sidebar");
                 setIsMenuOpen(false);
               }}
               aria-label="Download the app"
@@ -1030,8 +1042,13 @@ const App = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.gtag?.("event", "click_appstore", {
+                    method: "hero_link",
+                  });
+                }}
               >
-                <FaApple  style={{fontSize: "22px"}}/>
+                <FaApple style={{ fontSize: "22px" }} />
                 App Store
               </motion.a>
               <motion.a
@@ -1041,10 +1058,14 @@ const App = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.gtag?.("event", "click_playstore", {
+                    method: "hero_link",
+                  });
+                }}
               >
-                <FaGooglePlay style={{fontSize: "22px"}}/>
-
-Play Store
+                <FaGooglePlay style={{ fontSize: "22px" }} />
+                Play Store
               </motion.a>
             </div>
             <div className="kpis">
@@ -1070,16 +1091,27 @@ Play Store
                 alt="UpHomes app mockup"
                 src={`${process.env.PUBLIC_URL}/mock-up.png`}
               />
-
             </div>
 
-            <span className="floating-bubble one" aria-hidden="true">Verified</span>
-            <span className="floating-bubble two" aria-hidden="true">AI Match</span>
-            <span className="floating-bubble three" aria-hidden="true">Direct Chat</span>
+            <span className="floating-bubble one" aria-hidden="true">
+              Verified
+            </span>
+            <span className="floating-bubble two" aria-hidden="true">
+              AI Match
+            </span>
+            <span className="floating-bubble three" aria-hidden="true">
+              Direct Chat
+            </span>
 
-            <span className="floating-bubble btxt1" aria-hidden="true">Micro-Broker Network</span>
-            <span className="floating-bubble btxt2" aria-hidden="true">Smart Filters</span>
-            <span className="floating-bubble btxt3" aria-hidden="true">Passive Income</span>
+            <span className="floating-bubble btxt1" aria-hidden="true">
+              Micro-Broker Network
+            </span>
+            <span className="floating-bubble btxt2" aria-hidden="true">
+              Smart Filters
+            </span>
+            <span className="floating-bubble btxt3" aria-hidden="true">
+              Passive Income
+            </span>
           </div>
         </div>
       </header>
@@ -1102,7 +1134,7 @@ Play Store
                 objectFit: "cover",
                 height: "80vh",
                 // marginLeft: "-100px",
-                borderRadius: "14px"
+                borderRadius: "14px",
               }}
             />
           </div>
@@ -1549,8 +1581,16 @@ Play Store
                 padding: "0",
                 margin: "0",
               }}
+              onClick={() => {
+                window.gtag?.("event", "click_instagram", {
+                  method: "footer_link",
+                });
+              }}
             >
-              <FaInstagram style={{ color: "white", fontSize: "18px" }} className="social-icons"/>
+              <FaInstagram
+                style={{ color: "white", fontSize: "18px" }}
+                className="social-icons"
+              />
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=61572085060403"
@@ -1562,8 +1602,16 @@ Play Store
                 padding: "0",
                 margin: "0",
               }}
+              onClick={() => {
+                window.gtag?.("event", "click_facebook", {
+                  method: "footer_link",
+                });
+              }}
             >
-              <FaFacebook style={{ color: "white", fontSize: "18px" }} className="social-icons" />
+              <FaFacebook
+                style={{ color: "white", fontSize: "18px" }}
+                className="social-icons"
+              />
             </a>
             <a
               href="https://www.linkedin.com/company/uphomes/"
@@ -1575,8 +1623,16 @@ Play Store
                 padding: "0",
                 margin: "0",
               }}
+              onClick={() => {
+                window.gtag?.("event", "click_linkedin", {
+                  method: "footer_link",
+                });
+              }}
             >
-              <FaLinkedin style={{ color: "white", fontSize: "18px" }} className="social-icons" />
+              <FaLinkedin
+                style={{ color: "white", fontSize: "18px" }}
+                className="social-icons"
+              />
             </a>
           </div>
         </div>
@@ -1601,8 +1657,6 @@ Play Store
           </filter>
         </defs>
       </svg>
-
-
     </>
   );
 };
