@@ -1,8 +1,29 @@
+# Use the edge function for /download
 [[edge_functions]]
 path = "/download"
 function = "smart-redirect"
 
-# React SPA fallback (keep only ONE if you already have it)
+# Treat listing deep links like /download on mobile-not-installed
+[[edge_functions]]
+path = "/PropertyListing/*"
+function = "smart-redirect"
+
+# Optional lowercase alias (if you ever use /listing/*)
+[[edge_functions]]
+path = "/listing/*"
+function = "smart-redirect"
+
+# Serve verification files with correct JSON content-type
+[[headers]]
+for = "/.well-known/apple-app-site-association"
+  [headers.values]
+  Content-Type = "application/json"
+[[headers]]
+for = "/.well-known/assetlinks.json"
+  [headers.values]
+  Content-Type = "application/json"
+
+# CRA SPA fallback (keep only ONE of these in your repo)
 [[redirects]]
 from = "/*"
 to = "/index.html"
