@@ -29,7 +29,7 @@ export default async (request) => {
 
   // For previews
   const META_API_BASE = Deno.env.get("META_API_BASE") || "";
-  const DEFAULT_OG = ${url.origin}/og/default.jpg;
+  const DEFAULT_OG = `${url.origin}/og/default.jpg`;
 
   // Helpers
   const esc = (s = "") =>
