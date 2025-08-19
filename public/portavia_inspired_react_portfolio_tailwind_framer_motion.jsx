@@ -2,18 +2,6 @@ import React, { useMemo, useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { Menu, X, Palette, PenTool, Monitor, Sparkles, Mail, Phone, ArrowRight, ChevronDown } from "lucide-react";
 
-// ⚡️ Notes
-// - Built to feel like the referenced Portavia site while being original.
-// - TailwindCSS recommended. Minimal inline styles also included to keep it usable without Tailwind.
-// - If you use Tailwind, paste the utility classes as-is. Otherwise, swap to your own CSS.
-// - Animations are handled by Framer Motion.
-//
-// 📦 Minimal deps: react, framer-motion, lucide-react, (tailwindcss optional)
-//    npm i framer-motion lucide-react
-//
-// 🔧 Smooth scrolling: ensure 'html { scroll-behavior: smooth; }' in your global CSS.
-//
-// 🖼 Replace placeholder images with your own assets.
 
 const nav = [
   { label: "Home", href: "#home" },

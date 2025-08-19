@@ -1527,7 +1527,7 @@ const App = () => {
                 className="qr-code"
               >
                 <img
-                  src="https://firebasestorage.googleapis.com/v0/b/uphome12-8fb6a.appspot.com/o/IMG_6015.PNG?alt=media&token=d0b923cd-9efb-4baa-bcb2-0d84a4b30d66"
+                  src="https://firebasestorage.googleapis.com/v0/b/uphome12-8fb6a.appspot.com/o/IMG_8982.PNG?alt=media&token=73d832de-a9e8-40f3-adab-44826f5fbc40"
                   alt="QR Code"
                   style={{
                     height: "180px",
